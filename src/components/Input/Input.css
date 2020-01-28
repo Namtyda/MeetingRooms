@@ -1,0 +1,43 @@
+* {
+  box-sizing: border-box;
+}
+
+
+.input__title {
+  margin: 4px;
+  line-height: 16px;
+  font-size: 16px;  
+  display: block;
+  font-family: 'HelveticaNeue-Bold';
+  font-weight: 700;
+}
+
+.input__field {
+  border: 2px solid #E9ECEF;
+  border-radius: 4px;
+  color: #000;
+  height: 38px;
+  padding: 0 10px;
+}
+
+.input__field:focus,
+.input__field:hover {
+  border: 2px #007DFF solid;
+  outline: none;
+}
+
+
+.input__field::placeholder {
+  color: #858E98;
+}
+
+
+[type="date"] {
+  background:#fff url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg width='12px' height='12px' viewBox='0 0 12 12' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3C!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch --%3E%3Ctitle%3Ecalendar%3C/title%3E%3Cdesc%3ECreated with Sketch.%3C/desc%3E%3Cdefs%3E%3C/defs%3E%3Cg id='Page-1' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'%3E%3Cg id='assets' transform='translate(-140.000000, -76.000000)'%3E%3Cg id='calendar' transform='translate(138.000000, 74.000000)'%3E%3Crect id='Rectangle-2' x='0' y='0' width='16' height='16'%3E%3C/rect%3E%3Cpath d='M3,6 L3,13 L13,13 L13,6 L3,6 Z M12,3 L14,3 L14,14 L2,14 L2,3 L4,3 L4,2 L6,2 L6,3 L10,3 L10,2 L12,2 L12,3 Z M4,7 L4,9 L6,9 L6,7 L4,7 Z M7,7 L7,9 L9,9 L9,7 L7,7 Z M4,10 L4,12 L6,12 L6,10 L4,10 Z' id='ic_calendar' fill='%23000000' fill-rule='nonzero'%3E%3C/path%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/svg%3E") 97% 50% no-repeat;
+}
+[type="date"]::-webkit-inner-spin-button {
+  display: none;
+}
+[type="date"]::-webkit-calendar-picker-indicator {
+  opacity: 0;
+}
