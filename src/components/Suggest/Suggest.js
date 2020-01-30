@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { Input } from '../Input/Input'
-import { fetchPersons } from '../FakeAPI/FakeAPI'
 import { SuggestList } from './SuggestList'
+import { connect } from 'react-redux'
+import { inputChanged } from '../../redux/suggest-reducer'
+
 import './Suggest.css'
 
-export function Suggest({ onPersonsIdsChange }) {
-  const [persons, setPersons] = useState([]);
+const Suggest = (props) => {
+  const { onPersonsIdsChange, state } = props;
+
+  const [persons, setPersons] = useState(state.people);
   const [selectedPersons, setSelectedPersons] = useState([]);
   const [isFocused, setIsFocused] = useState(false);
 
@@ -17,11 +21,23 @@ export function Suggest({ onPersonsIdsChange }) {
     onPersonsIdsChange(selectedPersons.map(({ id }) => id));
   }, [selectedPersons, onPersonsIdsChange]);
 
-  async function search(e) {
-    const { value } = e.target;
-    const data = await fetchPersons(value);
-    setPersons(data);
-  }
+
+
+  // let search = (e) => {
+  //   // const { value } = e.target;
+  //   const newList = persons.filter((onePerson) => {
+  //     return onePerson.name.toLowerCase().includes(state.searchPeople.toLowerCase())
+  //   });
+  //   setPersons(newList);
+  // }
+
+ 
+
+  // async function searchOld(e) {
+  //   const { value } = e.target;
+  //   const data = await fetchPersons(value);
+  //   setPersons(data);
+  // }
 
   function handleSelectPerson(event) {
     const { dataset } = event.currentTarget;
@@ -54,11 +70,23 @@ export function Suggest({ onPersonsIdsChange }) {
     setIsFocused(false);
   }
 
+  let filterPeople = persons.filter((onePerson) => {
+    return onePerson.name.toLowerCase().includes(state.searchPeople.toLowerCase())
+  });
+ 
   return (
     <div>
-      <Input title='Участники' name='date' type='text' placeholder='Например, Тор' onChange={search} onFocus={openDropDown} onBlur={closeDropDown} />
+      <Input title='Участники'
+        name='date'
+        type='text'
+        placeholder='Например, Тор'
+        value={state.searchPeople}
+        onChange={state.inputChanged}
+        onFocus={openDropDown}
+        onBlur={closeDropDown}
+      />
       {isFocused && persons.length > 0 && (
-        <SuggestList persons={persons} onSelectPerson={handleSelectPerson} />
+        <SuggestList persons={persons.slice(0, 10)} onSelectPerson={handleSelectPerson} />
       )}
       <div className="suggest__list">
         {prepareSuggestCard(selectedPersons)}
@@ -67,3 +95,17 @@ export function Suggest({ onPersonsIdsChange }) {
   )
 }
 
+const mapStateToProps = (state) => ({
+  state: state.suggestReducer
+})
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    inputChanged: (e) => {
+      dispatch(inputChanged(e))
+    }
+  }
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Suggest)

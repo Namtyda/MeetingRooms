@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import { Link } from 'react-router-dom'
 import { Input } from '../Input/Input'
-import { Suggest } from '../Suggest/Suggest'
+import  Suggest from '../Suggest/Suggest'
 import { Button } from '../Button/Button'
 import { RecRooms } from '../RecRooms/RecRooms'
 import './Forms.css'

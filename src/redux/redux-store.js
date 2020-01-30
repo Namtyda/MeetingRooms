@@ -1,14 +1,15 @@
-import {combineReducers,createStore, applyMiddleware} from 'redux'
-
+import { combineReducers, createStore, applyMiddleware } from 'redux'
+import logger from 'redux-logger'
+import { suggestReducer } from './suggest-reducer'
 
 
 
 let reducers = combineReducers({
-            // reducer
+  suggestReducer: suggestReducer
 })
 
 
-const store = createStore(reducers)
+let store = createStore(reducers,applyMiddleware(logger))
 
 
 export default store

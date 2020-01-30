@@ -7,16 +7,34 @@ const persons = names.map((name, id) => ({
   avatar: `https://i.pravatar.cc/64?img=${id}`
 }));
 
-
-console.log(persons)
-export function fetchPersons(query) {
-  return new Promise((resolve, reject) => {
-    const response = persons.filter(word  => word.name.toLowerCase().includes(query.toLowerCase())).slice(0, 10)
-    setTimeout(() => resolve(response), getRandom(100, 500))
-  });
-}
-
+ 
 function getRandom(min, max) {
   return Math.floor(Math.random() * (max - min) + min)
 }
+ 
+const  initialState = {
+  people: persons,
+  searchPeople: ''
+}
+ 
+export const suggestReducer = (state = initialState, action) => {
+    switch (action.type) {
+        case'INPUT_CHANGED':
+        return Object.assign({},state,{searchPeople: action.text})
+    default:
+        return state
+    } 
+}
+ 
+export const inputChanged = (e) => ({
+    type: 'INPUT_CHANGED',
+    text: e.target.value
+})
 
+
+
+// function fetchPersons(query) {
+//   return new Promise((resolve, reject) => { 
+//     setTimeout(() => resolve(persons), getRandom(100, 500))
+//   });
+// }
