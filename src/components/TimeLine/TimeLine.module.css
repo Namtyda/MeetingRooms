@@ -2,7 +2,8 @@
   display: grid;
   grid-template-columns: 240px repeat(16, auto);
   grid-auto-rows: column;
-  border-bottom: 1px #E9ECEF solid
+  border-bottom: 1px #E9ECEF solid;
+  max-width: 1400px;
 }
 
 .time {
@@ -21,7 +22,6 @@
   left: 50%;
   width: 0;
   height: calc(100vh - 124px);
-  /* border-left: 1px solid rgba(19,100,205, .1); */
-  border-left: 1px solid red;
+  border-left: 1px solid rgba(19,100,205, .1);
   z-index: 10;
 }

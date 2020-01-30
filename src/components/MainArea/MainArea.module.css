@@ -1,0 +1,42 @@
+.mainarea {
+  width: 1094px;
+}
+
+.toprectangle{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 199px;
+  margin-top: 60px;
+}
+
+.rooms__row {
+  display: flex;
+  height: 28px;
+  background-color: #fff;
+  width: 100%;
+  position: relative;
+}
+
+.bottomrectangle{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 199px;
+  margin-top: 82px;
+}
+
+.timecell{
+ background-color: tomato;
+ height: 28px;
+ width: 18.3px;
+}
+
+.test {
+  height: 28px;
+  width: 5%;
+  position: absolute;
+  left: 53%;
+  top: 0;
+  background-color: #D5DFE9;
+}
