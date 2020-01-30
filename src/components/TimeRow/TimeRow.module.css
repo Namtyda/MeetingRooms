@@ -1,0 +1,17 @@
+.timerow {
+  display: flex;
+  height: 28px;
+  background-color: #fff;
+  width: 100%;
+  position: relative;
+}
+
+
+.test {
+  height: 28px;
+  width: 5%;
+  position: absolute;
+  left: 53%;
+  top: 0;
+  background-color: #D5DFE9;
+}

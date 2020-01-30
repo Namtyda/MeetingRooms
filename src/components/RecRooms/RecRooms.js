@@ -4,7 +4,7 @@ import './RecRooms.css'
 const initialState = [
   { name: 'Ржавый Фред', floor: '7 этаж', id: 1 },
   { name: 'Прачечная', floor: '7 этаж', id: 2 },
-  { name: 'Желтый дом', floor: '4 этаж', id: 3 },
+  { name: 'Желтый дом', floor: '7 этаж', id: 3 },
   { name: 'Оранжевый Тюльпан', floor: '7 этаж', id: 4 },
   { name: 'Джокер', floor: '6 этаж', id: 5 },
   { name: 'Мариванна', floor: '6 этаж', id: 6 },
