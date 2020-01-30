@@ -3,9 +3,7 @@ import styles from './MainArea.module.css'
 
 export function MainArea() {
 
-  const divCell = () => {
-    return Array.from({ length: 64 }).map(item => <div key={item} className={styles.timecell}></div>)
-  }
+  
   const myRef = useRef()
   console.log(myRef.current, 'ref')
 
