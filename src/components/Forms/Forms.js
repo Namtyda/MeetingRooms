@@ -4,6 +4,8 @@ import { Input } from '../Input/Input'
 import  Suggest from '../Suggest/Suggest'
 import { Button } from '../Button/Button'
 import { RecRooms } from '../RecRooms/RecRooms'
+import {connect} from 'react-redux'
+import { onSubmit } from '../../redux/reducer/forms-reducer' 
 import './Forms.css'
 
 const initialState = {
@@ -15,7 +17,7 @@ const initialState = {
   roomId: null
 };
 
-export function Forms() {
+function Forms(props) {
   const [formValues, setFormValues] = useState(initialState);
   const setFormValue = useCallback((name, value) => setFormValues((prev) => ({ ...prev, [name]: value })), []);
 
@@ -26,7 +28,7 @@ export function Forms() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log(formValues);
+    props.onSubmit(formValues)
   }
 
   function handleReset(e) {
@@ -65,3 +67,18 @@ export function Forms() {
     </form>
   );
 }
+
+const mapStateToProps = (state) => ({
+  state: state.formsReducer
+})
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onSubmit: (objectForm) => {  
+      dispatch(onSubmit(objectForm))
+    }
+  }
+}
+ 
+
+export default connect(mapStateToProps,mapDispatchToProps)(Forms)

@@ -1,16 +1,16 @@
 import React from 'react';
 import styles from './TimeRow.module.css'
 
-export function TimeRow() {
+export function TimeRow({ id, onClick }) {
 
   return (
     <>
-      <div className={styles.timerow}>
+      <div onClick={onClick} data-id={id} className={styles.timerow}>
 
-      <div className={styles.test}></div>
-      <div style={{left: '31%', width: '3%'}} className={styles.test}></div>
-      <div style={{left: '25%', width: '5%'}} className={styles.test}></div>
-      <div style={{left: '73.2%', width: '5%'}} className={styles.test}></div>
+        <div className={styles.test}></div>
+        <div style={{ left: '31%', width: '3%' }} className={styles.test}></div>
+        <div style={{ left: '25%', width: '5%' }} className={styles.test}></div>
+        <div style={{ left: '73.2%', width: '5%' }} className={styles.test}></div>
       </div>
     </>
   );

@@ -19,15 +19,15 @@ const  initialState = {
  
 export const suggestReducer = (state = initialState, action) => {
     switch (action.type) {
-        case'INPUT_CHANGED':
-        return Object.assign({},state,{searchPeople: action.text})
+      case "INPUT_CHANGE":
+        return {...state, searchPeople: action.text}
     default:
-        return state
+      return state
     } 
 }
- 
+
 export const inputChanged = (e) => ({
-    type: 'INPUT_CHANGED',
+    type: "INPUT_CHANGE",
     text: e.target.value
 })
 

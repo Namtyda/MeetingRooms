@@ -1,11 +1,11 @@
 import { combineReducers, createStore, applyMiddleware } from 'redux'
 import logger from 'redux-logger'
-import { suggestReducer } from './suggest-reducer'
-
-
+import { suggestReducer } from '../redux/reducer/suggest-reducer'
+import {formsReducer} from '../redux/reducer/forms-reducer'
 
 let reducers = combineReducers({
-  suggestReducer: suggestReducer
+  suggestReducer: suggestReducer,
+  formsReducer:formsReducer
 })
 
 
