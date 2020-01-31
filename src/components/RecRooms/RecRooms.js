@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux'
+import { onAddRoomId } from '../../redux//actions/actions'
+
 import './RecRooms.css'
 
 const initialState = [
@@ -12,7 +15,7 @@ const initialState = [
   { name: 'Чёрная вдова', floor: '6 этаж', id: 8 },
 ];
 
-export function RecRooms({ start, end, onRoomsIdChange }) {
+function RecRooms({ start, end, onAddRoomId }) {
   const [listItem, setListItem] = useState(initialState);
   const [isActive, setIsActive] = useState('');
 
@@ -36,7 +39,7 @@ export function RecRooms({ start, end, onRoomsIdChange }) {
       return prev.filter(({ id }) => id === itemId)
     });
     setIsActive('Active');
-    onRoomsIdChange(itemId)
+    onAddRoomId(itemId)
   }
 
   function closeSelect() {
@@ -53,3 +56,10 @@ export function RecRooms({ start, end, onRoomsIdChange }) {
     </div>
   )
 }
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onAddRoomId: (id) => dispatch(onAddRoomId(id))
+  }
+}
+export default connect(null, mapDispatchToProps)(RecRooms)

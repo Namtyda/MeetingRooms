@@ -1,15 +1,19 @@
-import {combineReducers,createStore, applyMiddleware} from 'redux'
+import { combineReducers, createStore, applyMiddleware } from 'redux'
+import { logger } from 'redux-logger'
+import { formsReducer } from './reducers/formsReducer'
+import { timeRowReducer } from './reducers/timeRowReducer'
 
 
 
 
 let reducers = combineReducers({
-            // reducer
-})
+  formsReducer: formsReducer,
+  timeRowReducer: timeRowReducer,
+});
 
 
-const store = createStore(reducers)
+export const store = createStore(reducers, applyMiddleware(logger))
 
 
-export default store
+
 

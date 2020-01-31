@@ -3,8 +3,10 @@ import { Input } from '../Input/Input'
 import { fetchPersons } from '../FakeAPI/FakeAPI'
 import { SuggestList } from './SuggestList'
 import './Suggest.css'
+import { connect } from 'react-redux';
+import { onAddPeopleId } from '../../redux/actions/actions'
 
-export function Suggest({ onPersonsIdsChange }) {
+function Suggest({ onAddPeopleId }) {
   const [persons, setPersons] = useState([]);
   const [selectedPersons, setSelectedPersons] = useState([]);
   const [isFocused, setIsFocused] = useState(false);
@@ -14,8 +16,8 @@ export function Suggest({ onPersonsIdsChange }) {
   }, [selectedPersons]);
 
   useEffect(() => {
-    onPersonsIdsChange(selectedPersons.map(({ id }) => id));
-  }, [selectedPersons, onPersonsIdsChange]);
+    onAddPeopleId(selectedPersons.map(({ id }) => id));
+  }, [selectedPersons, onAddPeopleId]);
 
   async function search(e) {
     const { value } = e.target;
@@ -67,3 +69,10 @@ export function Suggest({ onPersonsIdsChange }) {
   )
 }
 
+const mapDispatchToProps = dispatch => {
+  return {
+    onAddPeopleId: (id) => dispatch(onAddPeopleId(id))
+  }
+}
+
+export default connect(null, mapDispatchToProps)(Suggest)
